@@ -1,0 +1,68 @@
+@url = http://localhost:3431
+
+### Create a new employee
+POST {{url}}/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "position": "Software Engineer",
+  "salary": 85000
+}
+
+### Create another employee
+POST {{url}}/employees
+Content-Type: application/json
+
+{
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "position": "Product Manager",
+  "salary": 95000
+}
+
+### Create employee without salary
+POST {{url}}/employees
+Content-Type: application/json
+
+{
+  "name": "Bob Johnson",
+  "email": "bob@example.com",
+  "position": "Designer"
+}
+
+### Get all employees
+GET {{url}}/employees
+
+### Get employee by ID
+GET {{url}}/employees/1
+
+### Get non-existent employee (should return 404)
+GET {{url}}/employees/999
+
+### Update employee
+PUT {{url}}/employees/1
+Content-Type: application/json
+
+{
+  "position": "Senior Software Engineer",
+  "salary": 105000
+}
+
+### Update only name
+PUT {{url}}/employees/2
+Content-Type: application/json
+
+{
+  "name": "Jane Doe"
+}
+
+### Delete employee
+DELETE {{url}}/employees/1
+
+### Try to delete non-existent employee (should return 404)
+DELETE {{url}}/employees/999
+
+### Get all employees after modifications
+GET {{url}}/employees
